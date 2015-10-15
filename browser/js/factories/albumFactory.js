@@ -6,7 +6,6 @@ app.factory('AlbumFactory', function ($http) {
 	var albumsObj = {};
 
 	albumsObj.getAll = function(){
-
 		return $http.get('/api/albums/561e99c3300e0d6725faae28')
 			.then(function (response) {
 				var album = response.data;
@@ -25,7 +24,7 @@ app.factory('AlbumFactory', function ($http) {
 				return album;
 			})
 	}
-	
+
 	return albumsObj;
 })
 

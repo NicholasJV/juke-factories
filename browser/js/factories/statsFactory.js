@@ -20,3 +20,4 @@ app.factory('StatsFactory', function ($q) {
     return statsObj;
 });
 
+

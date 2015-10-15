@@ -8,6 +8,7 @@ app.controller('PlayerCtrl', function ($scope, $rootScope, PlayerFactory) {
 	// 	$rootScope.start(data.song);
 	// 	songs = data.album.songs;
 	// });
+
 	var songs = PlayerFactory.songs
 
 	$scope.isPlaying = PlayerFactory.isPlaying;
@@ -15,10 +16,15 @@ app.controller('PlayerCtrl', function ($scope, $rootScope, PlayerFactory) {
 	$scope.pause = PlayerFactory.pause;
 	$scope.play = PlayerFactory.play;
 	$scope.start = PlayerFactory.start;
+
+	$scope.currentSong = PlayerFactory.currentSong;
+	console.log('s.currentSong:', $scope.currentSong);
+
 	$scope.toggle = PlayerFactory.toggle;
 	$scope.moveTo = PlayerFactory.moveTo;
 	$scope.forward = PlayerFactory.forward;
 	$scope.back = PlayerFactory.back;
+
 
 	audio.addEventListener('timeupdate', function () {
 		$scope.progress = 100 * audio.currentTime / audio.duration;

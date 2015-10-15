@@ -11,21 +11,28 @@ app.controller('AlbumCtrl', function ($scope, $rootScope, AlbumFactory, PlayerFa
 	// 	});
 	// };
 
-	// $scope.$on('songLoad', function (evt, song) {
-	// 	$scope.currentSong = song;
-	// });
+
+
+	$scope.pause = PlayerFactory.pause
+	$scope.load = PlayerFactory.load;
+	$scope.pause = PlayerFactory.pause;
+	$scope.play = PlayerFactory.play;
 
 	AlbumFactory.getAll()
 		.then(function(album){
 			$scope.album = album;
+			var songs = album.songs;
+			$scope.start = function(song){
+				PlayerFactory.start(song, songs);
+				$rootScope.broadcast('startIt')
+			}
 			return StatsFactory.totalTime($scope.album)
 		})
 		.then(function(albumDuration){
 			albumDuration = Math.floor(albumDuration);
 			$scope.fullDuration = albumDuration
+
 		})
-
-
 
 });
 

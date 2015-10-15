@@ -4,11 +4,20 @@ var audio = document.createElement('audio');
 app.factory('PlayerFactory', function ($http, $rootScope) {
 
 // FROM PLAYER FACTORY:
+	// console.log($rootScope);
+	// var album = $rootScope.album;
+	// console.log(album);
 	var songs;
+
 	// $rootScope.$on('startIt', function (evt, data) {
 	// 	$rootScope.start(data.song);
 
 	// });
+
+	// $scope.$on('songLoad', function (evt, song) {
+	// 	$scope.currentSong = song;
+	// });
+
 
 // FROM ALBUM CONTROLLER:
 
@@ -34,6 +43,14 @@ app.factory('PlayerFactory', function ($http, $rootScope) {
 			this.playing = false;
 		},
 
+		start: function (song, songList) {
+			console.log("start clicked!")
+			this.pause();
+			songs = songList;
+			this.load(song);
+			this.play();
+		},
+
 		play: function () {
 			console.log("factory play fn player!")
 			console.log('this', this);
@@ -44,12 +61,6 @@ app.factory('PlayerFactory', function ($http, $rootScope) {
 
 		resume: function () {
 			console.log("resume")
-			this.play();
-		},
-
-		start: function (song) {
-			this.pause();
-			this.load(song);
 			this.play();
 		},
 
